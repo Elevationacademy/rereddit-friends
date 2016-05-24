@@ -1,5 +1,8 @@
 {
   "name": "rereddit-dev",
+  "scripts": {
+    "start": "node app.js"
+  },
   "dependencies": {
     "angular": "^1.5.5",
     "angular-ui-router": "^0.2.18",
