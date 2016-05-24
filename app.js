@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 
-mongoose.connect('mongodb://localhost/rereddit-dev');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/rereddit-dev');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
