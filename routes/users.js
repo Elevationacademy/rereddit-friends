@@ -49,8 +49,6 @@ router.get('/:user', function(req, res, next) {
   req.user.populate('friends', function(err, user) {
     if (err) { return next(err); }
 
-    console.log(user);
-
     res.json(user);
   });
 });

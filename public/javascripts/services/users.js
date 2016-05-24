@@ -38,15 +38,15 @@ app.factory('users', ['$http', 'auth', function($http, auth) {
     },
 
     addFriend: function (friend) {
-      return $http.post('/users/' + auth.currentUser()._id + /friends/ + friend._id, {
+      return $http.post('/users/' + auth.currentUser()._id + /friends/ + friend._id, null, {
         headers: {Authorization: 'Bearer '+ auth.getToken()}
       }).then(function (data) {
 
-          var currentId = auth.currentUser()._id;
-          var currentUser = usersService._findUserById(currentId);
+        var currentId = auth.currentUser()._id;
+        var currentUser = usersService._findUserById(currentId);
 
-          angular.copy(data.data.friends, currentUser.friends);
-        });
+        angular.copy(data.data.friends, currentUser.friends);
+      });
     },
 
     isFriend: function (user) {
