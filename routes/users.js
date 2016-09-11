@@ -45,6 +45,29 @@ router.post('/:user/friends/:friend', auth, function (req, res, next) {
   });
 });
 
+router.put('/:user/removefriend/:friend', auth, function (req, res, next) {
+  User.findById(req.params.user, function (err, user) {
+    if (err) { return err };
+
+    User.findById(req.params.friend, function (err, friend) {
+      if (err) { return err };
+
+      var index1 = friend.friends.indexOf(user._id);
+
+      friend.friends.splice(index1, 1);
+      friend.save();
+      
+
+      var index2 = user.friends.indexOf(friend._id);
+
+      user.friends.splice(index2, 1)
+      user.save(function(err, item) {
+        res.json(item);
+      });
+    });
+  });
+});
+
 router.get('/:user', function(req, res, next) {
   req.user.populate('friends', function(err, user) {
     if (err) { return next(err); }

@@ -6,4 +6,10 @@ app.controller('UsersCtrl', ['$scope', 'users', 'auth', function($scope, users, 
   $scope.addFriend = function(friend) {
     users.addFriend(friend);
   }
+
+  $scope.removeFriend = function(friend) {
+    users.removeFriend(friend);
+  }
+
+
 }]);

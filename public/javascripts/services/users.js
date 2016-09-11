@@ -49,6 +49,18 @@ app.factory('users', ['$http', 'auth', function($http, auth) {
       });
     },
 
+    removeFriend: function (friend) {
+      return $http.put('/users/' + auth.currentUser()._id + /removefriend/ + friend._id, null, {
+        headers: {Authorization: 'Bearer '+ auth.getToken()}
+      }).then(function (data) {
+
+        var currentId = auth.currentUser()._id;
+        var currentUser = usersService._findUserById(currentId);
+
+        angular.copy(data.data.friends, currentUser.friends);
+      });
+    },
+
     isFriend: function (user) {
       var currentId = auth.currentUser()._id;
 
