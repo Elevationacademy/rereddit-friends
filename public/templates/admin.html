@@ -1,0 +1,11 @@
+<h1>All Users</h1>
+<div ng-repeat="user in users track by $index" ng-hide="isCurrentUser()">
+    <span>
+      <a>{{user.username}}</a>
+      <input type="checkbox"
+             ng-model="user.isAdmin"
+             ng-change="toggleAdmin()">
+    </span>
+    <br>
+    <br>
+</div>

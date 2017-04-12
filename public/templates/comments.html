@@ -1,0 +1,20 @@
+<div class="page-header">
+    <h3>
+   {{post.text}}
+  </h3>
+</div>
+<div ng-repeat="comment in post.comments | orderBy:'-upvotes'">
+    <span ng-hide="userid==comment.author._id">
+    <span class="glyphicon glyphicon-thumbs-up" ng-click="upvote()"></span>
+    <span class="glyphicon glyphicon-thumbs-down" ng-click="downvote()"></span>
+    </span>
+    <span class="comment-body">{{comment.body}}</span> ({{comment.upvotes}}) - by {{comment.author.username}}
+    <a ng-show="isAdmin" ng-click="deleteComment()">Delete</a>
+</div>
+<form ng-submit="addComment()">
+    <h3>Add a new comment</h3>
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Comment" ng-model="body"></input>
+    </div>
+    <button type="submit" class="btn btn-primary">Post</button>
+</form>

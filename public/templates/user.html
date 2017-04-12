@@ -1,7 +1,7 @@
-<h1>{{user.username}}</h1>
-
-<h1>Friends</h1>
-
-<div ng-repeat="friend in friends">
-  <li>{{friend.username}}</li>
-</div>
+<h1>{{user.username}}'s Friends</h1>
+<ul ng-repeat="friend in user.friends track by $index">
+    <li>{{friend.username}}<span ng-if='friend.friends.length > 1'>'s other friends</span></li>
+    <ul ng-repeat="user in friend.friends track by $index" ng-hide="isCurrentUser()">
+        <li>{{user.username}}</li>
+    </ul>
+</ul>
