@@ -42,7 +42,7 @@ app.factory('auth', function($rootScope, $http, $window) {
         $http.defaults.headers.common.Authorization = 'Bearer ' + token;
         return true
       }
-      auth.logout()
+      auth.logOut()
     } else if (loaded) {
       return true
     }
